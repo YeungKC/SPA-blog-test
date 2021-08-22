@@ -1,0 +1,74 @@
+query user($user: String!) {
+  data: user(login: $user) {
+    name
+    websiteUrl
+    url
+    description: bio
+  }
+}
+
+query discussionCategories($owner: String!, $name: String!, $count: Int!) {
+  repository(owner: $owner, name: $name) {
+    discussionCategories(first: $count) {
+      nodes {
+        id
+        name
+      }
+    }
+  }
+}
+
+query discussions($owner: String!, $name: String!, $after: String, $before: String, $categoryId: ID, $first: Int, $last: Int, $orderBy: DiscussionOrder, $labelsCount: Int!) {
+  repository(owner: $owner, name: $name) {
+    discussions(after: $after, before: $before, categoryId: $categoryId, first: $first, last: $last, orderBy: $orderBy) {
+      pageInfo {
+        hasPreviousPage
+        startCursor
+        hasNextPage
+        endCursor
+      }
+      totalCount
+      nodes {
+        ...PostItem
+      }
+    }
+  }
+}
+
+fragment LabelItem on Label {
+  color
+  name
+}
+
+fragment PostItem on Discussion {
+  number
+  title
+  createdAt
+  labels(first: $labelsCount) {
+    nodes {
+      ...LabelItem
+    }
+  }
+}
+
+query discussion($owner: String!, $name: String!, $number: Int!, $labelsCount: Int!) {
+  repository(owner: $owner, name: $name) {
+    discussion(number: $number) {
+      ...PostDetail
+    }
+  }
+}
+
+fragment PostDetail on Discussion {
+  number
+  title
+  updatedAt
+  bodyHTML
+  url
+  upvoteCount
+  labels(first: $labelsCount) {
+    nodes {
+      ...LabelItem
+    }
+  }
+}

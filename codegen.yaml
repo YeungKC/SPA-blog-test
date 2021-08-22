@@ -1,0 +1,16 @@
+schema: https://docs.github.com/public/schema.docs.graphql
+documents: ./src/api/operation.graphql
+generates:
+  ./src/api/types-and-hooks.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-query
+    config:
+      skipTypename: true
+      exposeFetcher: true
+      onlyOperationTypes: true
+      preResolveTypes: true
+      fetcher:
+        func: "../hepler/fetcher#fetchData"
+        isReactHook: false
