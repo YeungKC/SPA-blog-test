@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Box, FlexBox } from "react-styled-flex";
+import { FlexBox } from "react-styled-flex";
 import styled from "styled-components";
 import { PostItemFragment } from "../api/types-and-hooks";
 import { Label, Time } from "./post_info";

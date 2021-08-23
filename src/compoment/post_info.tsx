@@ -1,4 +1,4 @@
-import { Box, FlexBox } from "react-styled-flex";
+import { FlexBox } from "react-styled-flex";
 import styled from "styled-components";
 import { LabelItemFragment, Maybe } from "../api/types-and-hooks";
 import config from "../config";
