@@ -6,15 +6,22 @@ import formatTime from "../hepler/time";
 
 function PostInfo({ time, labels }: { time: string; labels: Maybe<LabelItemFragment>[] }) {
   return (
-    <Wrapper wrap>
+    <Wrapper wrap gap="4px 8px" alignItems="stretch">
       {formatTime(time)}
-      {[labels.length > 0 && <Box margin="0 4px">|</Box>, labels.map((label) => <Label data={label!} />)]}
+      {labels.length && <Divider />}
+      {[labels.map((label) => <Label data={label!} />)]}
     </Wrapper>
   );
 }
 
 const Wrapper = styled(FlexBox)`
   color: #999;
+`;
+
+const Divider = styled.div`
+  margin: 2px 0;
+  width: 1px;
+  background-color: #999;
 `;
 
 function Label({ data }: { data: LabelItemFragment }) {
@@ -30,7 +37,6 @@ function Time({ time }: { time: string }) {
 }
 
 const LabelWrapper = styled.a`
-  margin: 0 4px;
   padding: 1px 6px 2px 6px;
   background-color: ${({ color }) => `#${color}4D`};
   border-radius: 4px;

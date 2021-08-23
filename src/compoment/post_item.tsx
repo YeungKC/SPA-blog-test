@@ -10,11 +10,11 @@ export default function PostItem({ data }: { data: PostItemFragment }) {
       <FlexBox column key={data!.number} padding="20px 10px">
         <Title>{data?.title}</Title>
         <FlexBox marginTop="12px" justifyContent="space-between">
-          <Box>
+          <FlexBox gap="4px 8px">
             {data?.labels?.nodes?.map((label) => (
               <Label data={label!} />
             ))}
-          </Box>
+          </FlexBox>
           <Time time={data!.createdAt} />
         </FlexBox>
       </FlexBox>
