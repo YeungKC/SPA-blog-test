@@ -17,7 +17,7 @@ export default function App() {
       <GlobalStyle />
       <FlexBox justifyContent="center" height="100%">
         <HashRouter>
-          <FlexBox column width="100%" marginTop="32px" maxWidth="700px" padding="0 20px">
+          <FlexBox column width="100%" marginTop="32px" maxWidth="700px" padding="0 20px" sizing="border-box">
             <UserInfo />
             <Switch>
               <Route exact path="/">
