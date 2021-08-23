@@ -7,6 +7,7 @@ interface Config {
   orderBy: string | null;
   postCategoryId: string;
   labelsCount: number;
+  blogName: string;
 }
 const config: Config = {
   caesarOffset: 4,
@@ -17,5 +18,6 @@ const config: Config = {
   orderBy: "CREATED_AT",
   postCategoryId: "DIC_kwDOF8LZSc4B-xAD",
   labelsCount: 64,
+  blogName: "YeungKC's Blog",
 };
 export default config;

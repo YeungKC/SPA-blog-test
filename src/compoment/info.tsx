@@ -2,24 +2,24 @@ import { Link } from "react-router-dom";
 import { Box, FlexBox } from "react-styled-flex";
 import styled from "styled-components";
 import useInfo from "../api/info";
+import config from "../config";
 
 export default function UserInfo() {
-  const { isLoading, data } = useInfo();
+  const { data } = useInfo();
   const info = data?.data;
 
-  if (isLoading || !info) {
-    return <div></div>;
-  }
-
+  const description = [
+    <Description>{info?.description ?? ""}</Description>,
+    <FlexBox marginTop="8px">
+      <a href={info?.url}>GitHub</a>
+      {info?.websiteUrl && [<Box width="8px" />, <a href={info.websiteUrl}>Home</a>]}
+    </FlexBox>,
+    <Divider />,
+  ];
   return (
     <FlexBox column alignItems="center" as="header">
-      <Name to="/">{info.name}'s Blog</Name>
-      <Description>{info.description}</Description>
-      <FlexBox marginTop="8px">
-        <a href={info.url}>GitHub</a>
-        {info.websiteUrl && [<Box width="8px" />, <a href={info.websiteUrl}>Home</a>]}
-      </FlexBox>
-      <Divider />
+      <Name to="/">{config.blogName}</Name>
+      {info && description}
     </FlexBox>
   );
 }

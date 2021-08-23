@@ -1,6 +1,5 @@
 query user($user: String!) {
   data: user(login: $user) {
-    name
     websiteUrl
     url
     description: bio

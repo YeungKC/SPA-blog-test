@@ -5156,7 +5156,7 @@ export type UserQueryVariables = Exact<{
 }>;
 
 
-export type UserQuery = { data?: Maybe<{ name?: Maybe<string>, websiteUrl?: Maybe<any>, url: any, description?: Maybe<string> }> };
+export type UserQuery = { data?: Maybe<{ websiteUrl?: Maybe<any>, url: any, description?: Maybe<string> }> };
 
 export type DiscussionCategoriesQueryVariables = Exact<{
   owner: Scalars['String'];
@@ -5234,7 +5234,6 @@ export const PostDetailFragmentDoc = `
 export const UserDocument = `
     query user($user: String!) {
   data: user(login: $user) {
-    name
     websiteUrl
     url
     description: bio
