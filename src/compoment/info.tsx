@@ -1,25 +1,17 @@
 import { Link } from "react-router-dom";
-import { Box, FlexBox } from "react-styled-flex";
+import { FlexBox } from "react-styled-flex";
 import styled from "styled-components";
-import useInfo from "../api/info";
 import config from "../config";
 
 export default function UserInfo() {
-  const { data } = useInfo();
-  const info = data?.data;
-
-  const description = [
-    <Description>{info?.description ?? ""}</Description>,
-    <FlexBox marginTop="8px">
-      <a href={info?.url}>GitHub</a>
-      {info?.websiteUrl && [<Box width="8px" />, <a href={info.websiteUrl}>Home</a>]}
-    </FlexBox>,
-    <Divider />,
-  ];
   return (
     <FlexBox column alignItems="center" as="header">
       <Name to="/">{config.blogName}</Name>
-      {info && description}
+      <Description>{config.description ?? ""}</Description>,
+      <FlexBox marginTop="8px" gap="8px">
+        <a href={config.sourceUrl}>Github</a>
+      </FlexBox>
+      <Divider />,
     </FlexBox>
   );
 }

@@ -5151,13 +5151,6 @@ export type VerifyVerifiableDomainInput = {
 
 
 
-export type UserQueryVariables = Exact<{
-  user: Scalars['String'];
-}>;
-
-
-export type UserQuery = { data?: Maybe<{ websiteUrl?: Maybe<any>, url: any, description?: Maybe<string> }> };
-
 export type DiscussionCategoriesQueryVariables = Exact<{
   owner: Scalars['String'];
   name: Scalars['String'];
@@ -5231,28 +5224,6 @@ export const PostDetailFragmentDoc = `
   }
 }
     ${LabelItemFragmentDoc}`;
-export const UserDocument = `
-    query user($user: String!) {
-  data: user(login: $user) {
-    websiteUrl
-    url
-    description: bio
-  }
-}
-    `;
-export const useUserQuery = <
-      TData = UserQuery,
-      TError = unknown
-    >(
-      variables: UserQueryVariables, 
-      options?: UseQueryOptions<UserQuery, TError, TData>
-    ) => 
-    useQuery<UserQuery, TError, TData>(
-      ['user', variables],
-      fetchData<UserQuery, UserQueryVariables>(UserDocument, variables),
-      options
-    );
-useUserQuery.fetcher = (variables: UserQueryVariables) => fetchData<UserQuery, UserQueryVariables>(UserDocument, variables);
 export const DiscussionCategoriesDocument = `
     query discussionCategories($owner: String!, $name: String!, $count: Int!) {
   repository(owner: $owner, name: $name) {

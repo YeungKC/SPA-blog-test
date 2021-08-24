@@ -8,6 +8,8 @@ interface Config {
   postCategoryId: string;
   labelsCount: number;
   blogName: string;
+  description: string;
+  sourceUrl: string;
 }
 const config: Config = {
   caesarOffset: 4,
@@ -19,5 +21,7 @@ const config: Config = {
   postCategoryId: "DIC_kwDOF8LZSc4B-xAD",
   labelsCount: 64,
   blogName: "YeungKC's Blog",
+  description: "One day we will die, Life is a journey.",
+  sourceUrl: "https://github.com/YeungKC/Blog",
 };
 export default config;

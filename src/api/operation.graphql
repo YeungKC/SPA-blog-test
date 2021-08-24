@@ -1,11 +1,3 @@
-query user($user: String!) {
-  data: user(login: $user) {
-    websiteUrl
-    url
-    description: bio
-  }
-}
-
 query discussionCategories($owner: String!, $name: String!, $count: Int!) {
   repository(owner: $owner, name: $name) {
     discussionCategories(first: $count) {

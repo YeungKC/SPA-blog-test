@@ -3,11 +3,10 @@ import { Switch, Route, HashRouter } from "react-router-dom";
 import NotFound from "./compoment/not_found";
 import Post from "./compoment/post";
 import Home from "./compoment/home";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { FlexBox } from "react-styled-flex";
 import UserInfo from "./compoment/info";
-import Footer from "./compoment/footer";
 
 const queryClient = new QueryClient();
 
@@ -17,7 +16,7 @@ export default function App() {
       <GlobalStyle />
       <FlexBox justifyContent="center" height="100%">
         <HashRouter>
-          <FlexBox column width="100%" marginTop="32px" maxWidth="700px" padding="0 20px" sizing="border-box">
+          <FlexBox column width="100%" marginTop="32px" maxWidth="800px" padding="0 20px" sizing="border-box">
             <UserInfo />
             <Switch>
               <Route exact path="/">
@@ -37,6 +36,14 @@ export default function App() {
     </QueryClientProvider>
   );
 }
+
+const Footer = styled(FlexBox)`
+  flex: 1;
+  color: #999;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 128px;
+`;
 
 const GlobalStyle = createGlobalStyle`
 html, body {
