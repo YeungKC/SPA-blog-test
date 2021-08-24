@@ -2,11 +2,11 @@ import React from "react";
 import { Switch, Route, HashRouter } from "react-router-dom";
 import NotFound from "./compoment/not_found";
 import Post from "./compoment/post";
-import Home from "./compoment/home";
 import styled, { createGlobalStyle } from "styled-components";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { FlexBox } from "react-styled-flex";
 import UserInfo from "./compoment/info";
+import Posts from "./compoment/posts";
 
 const queryClient = new QueryClient();
 
@@ -19,15 +19,9 @@ export default function App() {
           <FlexBox column width="100%" marginTop="32px" maxWidth="800px" padding="0 20px" sizing="border-box">
             <UserInfo />
             <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route path="/post/:id(\d+)">
-                <Post />
-              </Route>
-              <Route path="*">
-                <NotFound />
-              </Route>
+              <Route exact path="/" children={<Posts />} />
+              <Route path="/post/:id(\d+)" children={<Post />} />
+              <Route path="*" children={<NotFound />} />
             </Switch>
             <Footer />
           </FlexBox>
