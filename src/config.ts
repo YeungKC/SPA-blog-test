@@ -22,6 +22,6 @@ const config: Config = {
   labelsCount: 64,
   blogName: "YeungKC's Blog",
   description: "One day we will die, Life is a journey.",
-  sourceUrl: "https://github.com/YeungKC/Blog",
+  sourceUrl: "https://github.com/YeungKC/YeungKC.github.io",
 };
 export default config;
