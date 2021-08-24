@@ -1,10 +1,11 @@
+import { FC } from "react";
 import { FlexBox } from "react-styled-flex";
 import styled from "styled-components";
 import { LabelItemFragment, Maybe } from "../api/types-and-hooks";
 import config from "../config";
 import formatTime from "../hepler/time";
 
-function PostInfo({ time, labels }: { time: string; labels: Maybe<LabelItemFragment>[] }) {
+const PostInfo: FC<{ time: string; labels: Maybe<LabelItemFragment>[] }> = ({ time, labels }) => {
   return (
     <Wrapper wrap gap="4px 8px" alignItems="stretch">
       {formatTime(time)}
@@ -12,7 +13,7 @@ function PostInfo({ time, labels }: { time: string; labels: Maybe<LabelItemFragm
       {[labels.map((label) => <Label data={label!} />)]}
     </Wrapper>
   );
-}
+};
 
 const Wrapper = styled(FlexBox)`
   color: #999;

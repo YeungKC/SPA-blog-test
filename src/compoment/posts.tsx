@@ -1,11 +1,10 @@
-import {  useMemo,  } from "react";
-import { FlexBox } from "react-styled-flex";
-import styled from "styled-components";
+import { FC, useMemo } from "react";
 import useDiscussions from "../api/discussions";
 import InfiniteScroll from "./infinite_scroll";
-import PostItem from "./post_item";
+import { PostItem } from "./post_item";
+import { Loading } from "./loading";
 
-export default function Posts() {
+export const Posts: FC = ()=> {
   const { data, isLoading, isFetchingNextPage, hasNextPage, fetchNextPage } = useDiscussions();
   const discussions = useMemo(
     () => data?.pages.map((item) => item.repository?.discussions.nodes).reduce((previousValue, currentValue = []) => [...(previousValue ?? []), ...(currentValue ?? [])], []) ?? [],
@@ -14,16 +13,11 @@ export default function Posts() {
   );
 
   return (
-    <InfiniteScroll disabled={isLoading || isFetchingNextPage || !hasNextPage } onIntersect={fetchNextPage}>
-      <Wrapper column width="100%">
-        {discussions.map((node, index) => (
-          <PostItem key={node?.number} data={node!} />
-        ))}
-      </Wrapper>
+    <InfiniteScroll disabled={isLoading || isFetchingNextPage || !hasNextPage} onIntersect={fetchNextPage}>
+      {discussions.map((discussion) => (
+        <PostItem key={discussion?.number} data={discussion!} />
+      ))}
+      {(isLoading || isFetchingNextPage) && <Loading />}
     </InfiniteScroll>
   );
 }
-
-const Wrapper = styled(FlexBox)`
-  transition: ".25s all";
-`;

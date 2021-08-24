@@ -1,12 +1,12 @@
 import React from "react";
 import { Switch, Route, HashRouter } from "react-router-dom";
-import NotFound from "./compoment/not_found";
-import Post from "./compoment/post";
+import { NotFound } from "./compoment/not_found";
+import { Post } from "./compoment/post";
 import styled, { createGlobalStyle } from "styled-components";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { FlexBox } from "react-styled-flex";
-import UserInfo from "./compoment/info";
-import Posts from "./compoment/posts";
+import { UserInfo } from "./compoment/info";
+import { Posts } from "./compoment/posts";
 
 const queryClient = new QueryClient();
 
